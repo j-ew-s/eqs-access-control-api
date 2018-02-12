@@ -1,11 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EQS.AccessControl.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EQS.AccessControl.Repository.Configurations
 {
-    public class PersonConfiguration
+    class PersonConfiguration : IEntityTypeConfiguration<Person>
     {
+        public void Configure(EntityTypeBuilder<Person> builder)
+        {
+            builder.ToTable("Person");
+
+            builder.HasIndex(h => h.Id);
+
+            builder.HasOne(h => h.Credential).WithOne(o => o.Person).HasForeignKey<Credential>(f => f.Id);
+
+            builder.Property(p => p.Name).IsRequired();
+
+            builder.Ignore(i => i.Validations);
+        }
 
     }
 }

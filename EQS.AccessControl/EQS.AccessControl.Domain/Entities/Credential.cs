@@ -9,5 +9,7 @@ namespace EQS.AccessControl.Domain.Entities
     {
         public string Username { get; set; }
         public string Password { get; set; }
+        public Person Person { get; set; }
+        public int PersonId { get; set; }
     }
 }
