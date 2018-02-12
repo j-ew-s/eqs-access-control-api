@@ -4,15 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EQS.AccessControl.Repository.Configurations
 {
-    class PersonConfiguration : IEntityTypeConfiguration<Person>
+    class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<Person> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.ToTable("People");
+            builder.ToTable("Roles");
 
             builder.HasIndex(h => h.Id);
-
-            builder.HasOne(h => h.Credential).WithOne(o => o.Person).HasForeignKey<Credential>(f => f.Id);
 
             builder.Property(p => p.Name).IsRequired();
 
