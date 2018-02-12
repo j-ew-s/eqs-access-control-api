@@ -8,4 +8,12 @@
     <Folder Include="ViewModels\Input\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EQS.AccessControl.Domain\EQS.AccessControl.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
