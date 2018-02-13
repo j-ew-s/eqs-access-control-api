@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EQS.AccessControl.Application\EQS.AccessControl.Application.csproj" />
+    <ProjectReference Include="..\EQS.AccessControl.Repository\EQS.AccessControl.Repository.csproj" />
   </ItemGroup>
 
 </Project>

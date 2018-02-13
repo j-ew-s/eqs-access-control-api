@@ -21,5 +21,5 @@ namespace EQS.AccessControl.Repository.Configurations
         }
     }
 
-    }
 }
+
