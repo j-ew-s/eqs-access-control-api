@@ -9,9 +9,19 @@ namespace EQS.AccessControl.Application.AutoMapper
     {
         public ClassMapper()
         {
-            CreateMap<Credential, CredentialOutput>().ReverseMap();
+            //Input
             CreateMap<CredentialInput, Credential>().ReverseMap();
+            CreateMap<PersonInput, Person>().ReverseMap();
+            CreateMap<PersonRoleInput, PersonRole>().ReverseMap();
+            CreateMap<RoleInput, Role>().ReverseMap();
+
+
+            //Output
+            CreateMap<Credential, CredentialOutput>().ReverseMap();
             CreateMap<Person, PersonOutput>().ReverseMap();
+            CreateMap<PersonRoleOutput, PersonRoleOutput>().ReverseMap();
+            CreateMap<RoleOutput, RoleOutput>().ReverseMap();
+
         }
     }
 }

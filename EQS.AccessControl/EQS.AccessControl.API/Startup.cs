@@ -35,6 +35,12 @@ namespace EQS.AccessControl.API
             services.AddTransient<ILoginAppService, LoginAppService>();
             services.AddTransient<ILoginRepository, LoginRepository>();
 
+            services.AddTransient<IRegisterService, RegisterService>();
+            services.AddTransient<IRegisterAppService, RegisterAppService>();
+            services.AddTransient<IRegisterRepository, RegisterRepository>();
+
+
+
             services.AddMvc(options =>{ options.Filters.Add(new ExceptionHandlingFilter()); });
 
             services.AddAutoMapper();
