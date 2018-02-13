@@ -22,8 +22,11 @@ namespace EQS.AccessControl.Domain.Services
 
         public Person Login(Credential credential)
         {
+            credential.EncryptedPassword();
+
             if (credential.IsValid())
                 return _iLoginRepository.Login(credential);
+
             return new Person();
         }
     }

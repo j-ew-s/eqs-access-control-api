@@ -15,5 +15,14 @@ namespace EQS.AccessControl.Domain.Entities
         public Credential Credential { get; set; }
         public int CredentialId { get; set; }
         public ICollection<PersonRole> PersonRoles { get; set; }
+
+        public bool IsValid()
+        {
+           // var validation = new LoginConsistentValidation(this);
+          //  Validations = validation.BaseValidation.IsValid();
+
+           // return Validations.IsValid;
+            return true;
+        }
     }
 }

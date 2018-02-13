@@ -1,4 +1,6 @@
-﻿using EQS.AccessControl.Domain.Entities.Base;
+﻿using System.Security.Cryptography;
+using System.Text;
+using EQS.AccessControl.Domain.Entities.Base;
 using EQS.AccessControl.Domain.Validation.Login;
 
 namespace EQS.AccessControl.Domain.Entities
@@ -16,6 +18,21 @@ namespace EQS.AccessControl.Domain.Entities
             Validations = validation.BaseValidation.IsValid();
 
             return Validations.IsValid;
+        }
+
+        public void EncryptedPassword()
+        {
+            StringBuilder senha = new StringBuilder();
+
+            MD5 md5 = MD5.Create();
+            byte[] combinated = Encoding.ASCII.GetBytes(Username + "_" + Password);
+            byte[] hash = md5.ComputeHash(combinated);
+            foreach (byte t in hash)
+            {
+                senha.Append(t.ToString("X2"));
+            }
+            Password = senha.ToString();
+
         }
     }
 }
