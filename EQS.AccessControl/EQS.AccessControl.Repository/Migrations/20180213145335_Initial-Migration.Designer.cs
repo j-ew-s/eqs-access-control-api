@@ -11,7 +11,7 @@ using System;
 namespace EQS.AccessControl.Repository.Migrations
 {
     [DbContext(typeof(EntityFrameworkContext))]
-    [Migration("20180213141428_Initial-Migration")]
+    [Migration("20180213145335_Initial-Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
