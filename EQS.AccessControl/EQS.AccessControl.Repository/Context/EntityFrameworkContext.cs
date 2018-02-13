@@ -10,8 +10,9 @@ namespace EQS.AccessControl.Repository.Context
         public EntityFrameworkContext(DbContextOptions<EntityFrameworkContext> options) : base(options) { }
 
         public DbSet<Person> Person { get; set; }
-        public DbSet<Role> Posts { get; set; }
+        public DbSet<Role> Role { get; set; }
         public DbSet<Credential> Credential { get; set; }
+        public DbSet<PersonRole> PersonRole { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
