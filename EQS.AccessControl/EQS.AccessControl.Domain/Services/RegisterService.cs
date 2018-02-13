@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using EQS.AccessControl.Domain.Entities;
+using EQS.AccessControl.Domain.Interfaces.Repository;
 using EQS.AccessControl.Domain.Interfaces.Services;
 using EQS.AccessControl.Domain.Interfaces.Services.Base;
 
@@ -10,6 +11,12 @@ namespace EQS.AccessControl.Domain.Services
 {
     public class RegisterService : IRegisterService
     {
+        private readonly IRegisterRepository _registerRepository;
+
+        public RegisterService(IRegisterRepository registerRepository)
+        {
+            _registerRepository = registerRepository;
+        }
 
         public void Dispose()
         {
@@ -18,27 +25,32 @@ namespace EQS.AccessControl.Domain.Services
 
         public Person Create(Person entity)
         {
-            throw new NotImplementedException();
+            if (entity.IsValidForRegister())
+               return _registerRepository.Create(entity);
+            else
+            {
+                return null;
+            }
         }
 
         public Person Delete(int id)
         {
-            throw new NotImplementedException();
+            return _registerRepository.Delete(id);
         }
 
         public Person GetById(int id)
         {
-            throw new NotImplementedException();
+           return  _registerRepository.GetById(id);
         }
 
         public Person Update(Person entity)
         {
-            throw new NotImplementedException();
+           return  _registerRepository.Update(entity);
         }
 
         IEnumerable<Person> IBaseService<Person>.GetAll()
         {
-            throw new NotImplementedException();
+          return   _registerRepository.GetAll();
         }
 
         public IEnumerable<Person> GetByExpression(Expression<Func<Person, bool>> predicate)
