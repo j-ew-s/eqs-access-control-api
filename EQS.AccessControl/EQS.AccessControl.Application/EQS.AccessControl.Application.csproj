@@ -12,4 +12,8 @@
     <ProjectReference Include="..\EQS.AccessControl.Domain\EQS.AccessControl.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Input\Base\" />
+  </ItemGroup>
+
 </Project>
