@@ -22,8 +22,9 @@ namespace EQS.AccessControl.Domain.Services
 
         public Person Login(Credential credential)
         {
-            //if(credential.Validations.IsValid)
-            return null;
+            if (credential.IsValid())
+                return _iLoginRepository.Login(credential);
+            return new Person();
         }
     }
 }

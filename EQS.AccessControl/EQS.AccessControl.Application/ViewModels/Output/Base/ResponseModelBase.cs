@@ -13,6 +13,7 @@ namespace EQS.AccessControl.Application.ViewModels.Output.Base
 
         public ResponseModelBase<TEntity> OkResult(List<TEntity> payload, List<string> message)
         {
+            
             return new ResponseModelBase<TEntity>
             {
                 Payload = payload,
