@@ -11,15 +11,26 @@ namespace EQS.AccessControl.Application.ViewModels.Output.Base
         public List<string> Message { get; set; }
         public bool Error { get; set; }
 
-        public ResponseModelBase<TEntity> OkResult(List<TEntity> payload, List<string> message)
+       /* public ResponseModelBase<TEntity> OkResult(List<TEntity> payload, List<string> message)
         {
-            
             return new ResponseModelBase<TEntity>
             {
                 Payload = payload,
                 Status = HttpStatusCode.OK,
                 ResultLength = payload.Count,
                 Message = message,
+                Error = message.Count >= 1
+            };
+        }*/
+
+        public ResponseModelBase<TEntity> OkResult(TEntity payload, List<string> message)
+        {
+            return new ResponseModelBase<TEntity>()
+            {
+                Payload = new List<TEntity> { payload },
+                Status = HttpStatusCode.OK,
+                ResultLength = 1,
+                Message =  message,
                 Error = message.Count >= 1
             };
         }

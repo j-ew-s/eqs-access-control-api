@@ -13,5 +13,10 @@ namespace EQS.AccessControl.Domain.Entities
         }
         public string Name { get; set; }
         public ICollection<PersonRole> PersonRoles { get; set; }
+
+        public bool IsCreateValid()
+        {
+            return true;
+        }
     }
 }
