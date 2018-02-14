@@ -17,22 +17,6 @@ namespace EQS.AccessControl.Domain.Services
             _roleRepository = roleRepository;
         }
 
-        public Role Create(Role entity)
-        {
-           if(entity.)
-        }
-
-        public Role Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            _roleRepository.Dispose();
-            GC.SuppressFinalize(this);
-        }
-
         public IEnumerable<Role> GetAll()
         {
             return _roleRepository.GetAll();
@@ -48,9 +32,30 @@ namespace EQS.AccessControl.Domain.Services
             return _roleRepository.GetById(id);
         }
 
+        public Role Create(Role entity)
+        {
+            if (entity.IsValidForCreate())
+                return _roleRepository.Create(entity);
+            return entity;
+        }
+
         public Role Update(Role entity)
+        {
+            if (entity.IsValidForCreate())
+                return _roleRepository.Update(entity);
+            return entity;
+        }
+
+        public Role Delete(int id)
         {
             throw new NotImplementedException();
         }
+
+        public void Dispose()
+        {
+            _roleRepository.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
     }
 }

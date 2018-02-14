@@ -44,20 +44,33 @@ namespace EQS.AccessControl.API.Controllers
             return _roleAppService.GetById(id);
         }
         
-        // POST: api/Role
+        /// <summary>
+        ///  Insert a new Role to DB
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
         [HttpPost]
-        public void Post([FromBody]RoleInput role)
+        public ResponseModelBase<RoleOutput> Post([FromBody]RoleInput role)
         {
             return _roleAppService.Create(role);
         }
         
-        // PUT: api/Role/5
+        /// <summary>
+        ///  Updates an existent Role
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public ResponseModelBase<RoleOutput> Put(int id, [FromBody]RoleInput value)
         {
+            return _roleAppService.Update(value);
         }
         
-        // DELETE: api/ApiWithActions/5
+        /// <summary>
+        /// Delete a role
+        /// </summary>
+        /// <param name="id">Role Id</param>
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
