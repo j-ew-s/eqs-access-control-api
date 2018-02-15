@@ -48,9 +48,10 @@ namespace EQS.AccessControl.Domain.Services
 
         public Role Delete(int id)
         {
-            // TODO : Validate if there is no user associated to it.
-            // TODO : Validate if the object exists at DB
-            return _roleRepository.Delete(id);
+            var role = new Role {Id = id};
+            if (role.IsValidForDelete(_roleRepository))
+                return _roleRepository.Delete(id);
+            return role;
         }
 
         public void Dispose()

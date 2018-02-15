@@ -8,5 +8,6 @@ namespace EQS.AccessControl.Domain.Interfaces.Repository
 {
     public interface IRoleRepository : IBaseRepository<Role>, IDisposable
     {
+        List<Person> GetPeopleAssociatedToRoleId(int id);
     }
 }

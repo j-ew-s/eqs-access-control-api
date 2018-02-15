@@ -64,7 +64,7 @@ namespace EQS.AccessControl.Application.Services
             var result = _roleService.Delete(id);
             var roleOutput = Mapper.Map<RoleOutput>(result);
 
-            return new ResponseModelBase<RoleOutput>().OkResult(roleOutput, new List<string>());
+            return new ResponseModelBase<RoleOutput>().OkResult(roleOutput, result.Validations.ErrorMessages);
         }
 
         public void Dispose()
