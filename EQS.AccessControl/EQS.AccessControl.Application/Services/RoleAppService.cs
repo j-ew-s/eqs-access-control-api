@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Net.Http.Headers;
-using System.Text;
 using AutoMapper;
 using EQS.AccessControl.Application.Interfaces;
 using EQS.AccessControl.Application.ViewModels.Input;
-using EQS.AccessControl.Application.ViewModels.Input.RoleInsert;
 using EQS.AccessControl.Application.ViewModels.Output;
 using EQS.AccessControl.Application.ViewModels.Output.Base;
 using EQS.AccessControl.Domain.Entities;
@@ -45,7 +41,7 @@ namespace EQS.AccessControl.Application.Services
             return new ResponseModelBase<RoleOutput>().OkResult(roleOutput, new List<string>());
         }
 
-        public ResponseModelBase<RoleOutput> Create(RoleInsertInput entity)
+        public ResponseModelBase<RoleOutput> Create(RoleInput entity)
         {
             var roleEntity = Mapper.Map<Role>(entity);
             var result = _roleService.Create(roleEntity);
@@ -65,7 +61,10 @@ namespace EQS.AccessControl.Application.Services
 
         public ResponseModelBase<RoleOutput> Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = _roleService.Delete(id);
+            var roleOutput = Mapper.Map<RoleOutput>(result);
+
+            return new ResponseModelBase<RoleOutput>().OkResult(roleOutput, new List<string>());
         }
 
         public void Dispose()

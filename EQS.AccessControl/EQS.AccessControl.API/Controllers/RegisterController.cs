@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EQS.AccessControl.API.Controllers
 {
+    /// <summary>
+    ///  Register API
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Register")]
     public class RegisterController : Controller
@@ -22,14 +25,14 @@ namespace EQS.AccessControl.API.Controllers
 
         
         // GET: api/Register
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET: api/Register/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}:int")]
         public string Get(int id)
         {
             return "value";

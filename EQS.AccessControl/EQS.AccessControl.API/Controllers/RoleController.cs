@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EQS.AccessControl.API.Controllers
 {
+    /// <summary>
+    ///  Role API
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Role")]
     public class RoleController : Controller
@@ -72,8 +75,9 @@ namespace EQS.AccessControl.API.Controllers
         /// </summary>
         /// <param name="id">Role Id</param>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ResponseModelBase<RoleOutput> Delete(int id)
         {
+            return  _roleAppService.Delete(id);
         }
     }
 }

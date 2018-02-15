@@ -33,8 +33,7 @@ namespace EQS.AccessControl.Application.Services
 
             var personOutput = Mapper.Map<PersonOutput>(result);
 
-            return new ResponseModelBase<PersonOutput>().OkResult(new List<PersonOutput>() {personOutput},
-                result.Validations.ErrorMessages);
+            return new ResponseModelBase<PersonOutput>().OkResult(personOutput, result.Validations.ErrorMessages);
         }
     }
 }

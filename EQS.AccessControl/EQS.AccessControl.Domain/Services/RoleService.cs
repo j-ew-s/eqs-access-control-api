@@ -48,7 +48,9 @@ namespace EQS.AccessControl.Domain.Services
 
         public Role Delete(int id)
         {
-            throw new NotImplementedException();
+            // TODO : Validate if there is no user associated to it.
+            // TODO : Validate if the object exists at DB
+            return _roleRepository.Delete(id);
         }
 
         public void Dispose()

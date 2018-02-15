@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using EQS.AccessControl.Application.ViewModels.Input;
-using EQS.AccessControl.Application.ViewModels.Input.RoleInsert;
 using EQS.AccessControl.Application.ViewModels.Output;
 using EQS.AccessControl.Domain.Entities;
 
@@ -15,13 +14,12 @@ namespace EQS.AccessControl.Application.AutoMapper
             CreateMap<PersonInput, Person>().ReverseMap();
             CreateMap<PersonRoleInput, PersonRole>().ReverseMap();
             CreateMap<RoleInput, Role>().ReverseMap();
-            CreateMap<RoleInsertInput, Role>().ReverseMap();
             
             //Output
             CreateMap<Credential, CredentialOutput>().ReverseMap();
             CreateMap<Person, PersonOutput>().ReverseMap();
-            CreateMap<PersonRoleOutput, PersonRoleOutput>().ReverseMap();
-            CreateMap<RoleOutput, RoleOutput>().ReverseMap();
+            CreateMap<PersonRole, PersonRoleOutput>().ReverseMap();
+            CreateMap<Role, RoleOutput>().ReverseMap();
 
         }
     }
