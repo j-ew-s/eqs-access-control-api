@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EQS.AccessControl.Domain.Entities.Base;
 using EQS.AccessControl.Domain.Interfaces.Repository;
+using EQS.AccessControl.Domain.ObjectValue;
 using EQS.AccessControl.Domain.Validation.Role;
 
 namespace EQS.AccessControl.Domain.Entities

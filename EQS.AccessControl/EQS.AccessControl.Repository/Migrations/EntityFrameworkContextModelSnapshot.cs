@@ -35,8 +35,6 @@ namespace EQS.AccessControl.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id");
-
                     b.ToTable("Credentials");
                 });
 
@@ -50,9 +48,6 @@ namespace EQS.AccessControl.Repository.Migrations
                         .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Id")
-                        .IsUnique();
 
                     b.ToTable("People");
                 });
@@ -79,8 +74,6 @@ namespace EQS.AccessControl.Repository.Migrations
                         .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Id");
 
                     b.ToTable("Roles");
                 });

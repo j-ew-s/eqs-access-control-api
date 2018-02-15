@@ -11,7 +11,7 @@ using System;
 namespace EQS.AccessControl.Repository.Migrations
 {
     [DbContext(typeof(EntityFrameworkContext))]
-    [Migration("20180213145335_Initial-Migration")]
+    [Migration("20180215213233_Initial-Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,8 +36,6 @@ namespace EQS.AccessControl.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id");
-
                     b.ToTable("Credentials");
                 });
 
@@ -51,9 +49,6 @@ namespace EQS.AccessControl.Repository.Migrations
                         .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Id")
-                        .IsUnique();
 
                     b.ToTable("People");
                 });
@@ -80,8 +75,6 @@ namespace EQS.AccessControl.Repository.Migrations
                         .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Id");
 
                     b.ToTable("Roles");
                 });

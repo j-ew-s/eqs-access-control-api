@@ -6,13 +6,13 @@ namespace EQS.AccessControl.Application.ViewModels.Output
     {
         public PersonOutput()
         {
-            PersonRoles = new HashSet<PersonRoleOutput>();
+            Roles = new HashSet<RoleOutput>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
         public CredentialOutput Credential { get; set; }
         public int CredentialId { get; set; }
-        public ICollection<PersonRoleOutput> PersonRoles { get; set; }
+        public ICollection<RoleOutput> Roles { get; set; }
     }
 }

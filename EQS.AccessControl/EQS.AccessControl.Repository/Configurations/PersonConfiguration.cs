@@ -10,7 +10,7 @@ namespace EQS.AccessControl.Repository.Configurations
         {
             builder.ToTable("People");
 
-            builder.HasIndex(h => h.Id);
+            builder.HasKey(h => h.Id);
 
             builder.HasOne(h => h.Credential).WithOne(o => o.Person).HasForeignKey<Credential>(f => f.Id);
 

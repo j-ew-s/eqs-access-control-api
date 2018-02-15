@@ -81,25 +81,9 @@ namespace EQS.AccessControl.Repository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Credentials_Id",
-                table: "Credentials",
-                column: "Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_People_Id",
-                table: "People",
-                column: "Id",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PersonRoles_RoleId",
                 table: "PersonRoles",
                 column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Roles_Id",
-                table: "Roles",
-                column: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -10,7 +10,7 @@ namespace EQS.AccessControl.Repository.Configurations
         {
             builder.ToTable("Roles");
 
-            builder.HasIndex(h => h.Id);
+            builder.HasKey(h => h.Id);
 
             builder.Property(p => p.Name).IsRequired();
 

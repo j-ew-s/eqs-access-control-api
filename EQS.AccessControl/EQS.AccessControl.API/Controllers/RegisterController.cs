@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using EQS.AccessControl.Application.Interfaces;
 using EQS.AccessControl.Application.ViewModels.Input;
-using Microsoft.AspNetCore.Http;
+using EQS.AccessControl.Application.ViewModels.Output;
+using EQS.AccessControl.Application.ViewModels.Output.Base;
+using EQS.AccessControl.Application.ViewModels.Output.Register;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EQS.AccessControl.API.Controllers
@@ -24,39 +26,42 @@ namespace EQS.AccessControl.API.Controllers
         }
 
         
-        // GET: api/Register
+        /// <summary>
+        /// Get all the People 
+        /// </summary>
+        /// <returns>List of People</returns>
         [HttpGet("GetAll")]
-        public IEnumerable<string> Get()
+        public ResponseModelBase<List<RegisterPersonOutput>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _registerAppService.GetAll();
         }
 
         // GET: api/Register/5
         [HttpGet("{id}:int")]
-        public string Get(int id)
+        public ResponseModelBase<RegisterPersonOutput> Get(int id)
         {
-            return "value";
+            return _registerAppService.GetById(id);
         }
         
         // POST: api/Register
         [HttpPost]
-        public void Post([FromBody]PersonInput person)
+        public ResponseModelBase<RegisterPersonOutput> Post([FromBody]PersonInput person)
         {
-            _registerAppService.Create(person);
+           return _registerAppService.Create(person);
         }
         
         // PUT: api/Register/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]PersonInput person)
+        public ResponseModelBase<RegisterPersonOutput> Put(int id, [FromBody]PersonInput person)
         {
-            _registerAppService.Update(person);
+            return _registerAppService.Update(person);
         }
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ResponseModelBase<RegisterPersonOutput> Delete(int id)
         {
-            _registerAppService.Delete(id);
+            return _registerAppService.Delete(id);
         }
     }
 }
