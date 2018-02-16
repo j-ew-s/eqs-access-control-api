@@ -7,6 +7,6 @@ namespace EQS.AccessControl.Application.Interfaces
 {
     public interface ILoginAppService : IDisposable
     {
-        ResponseModelBase<PersonOutput> Login(CredentialInput credential);
+        ResponseModelBase<LoginOutput> Login(CredentialInput credential);
     }
 }

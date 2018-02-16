@@ -18,6 +18,9 @@ namespace EQS.AccessControl.Repository.Repository
         public Person Login(Credential credential)
         {
             return Db.Person.AsNoTracking()
+                .Include(i => i.Credential)
+                .Include(i => i.PersonRoles)
+                .ThenInclude(t => t.Roles)
                 .FirstOrDefault(f => f.Credential.Username == credential.Username &&
                                      f.Credential.Password == credential.Password);
         }

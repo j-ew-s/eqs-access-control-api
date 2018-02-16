@@ -20,7 +20,6 @@ namespace EQS.AccessControl.Application.AutoMapper
             //Output
             CreateMap<Credential, CredentialOutput>().ReverseMap();
             CreateMap<Person, PersonOutput>().ReverseMap();
-            CreateMap<Person, PersonOutput>().ReverseMap();
             CreateMap<PersonRole, PersonRoleOutput>().ReverseMap();
             CreateMap<Role, RoleOutput>().ReverseMap();
 
@@ -28,6 +27,8 @@ namespace EQS.AccessControl.Application.AutoMapper
             CreateMap<Credential, RegisterCredentialOutput>().ReverseMap();
             CreateMap<Person, RegisterPersonOutput>().ForMember(dest => dest.Roles,
                 opt => opt.MapFrom(src => src.PersonRoles.Select(s => s.Roles))); ;
+            CreateMap<Person, LoginOutput>().ForMember(dest => dest.PersonOutput,
+                opt => opt.MapFrom(src => src));
 
 
         }

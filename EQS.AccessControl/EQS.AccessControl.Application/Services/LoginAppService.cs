@@ -25,15 +25,15 @@ namespace EQS.AccessControl.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public ResponseModelBase<PersonOutput> Login(CredentialInput credential)
+        public ResponseModelBase<LoginOutput> Login(CredentialInput credential)
         {
             var credentialModel = Mapper.Map<Credential>(credential);
 
             var result = _loginService.Login(credentialModel);
 
-            var personOutput = Mapper.Map<PersonOutput>(result);
+            var personOutput = Mapper.Map<LoginOutput>(result);
 
-            return new ResponseModelBase<PersonOutput>().OkResult(personOutput, result.Validations.ErrorMessages);
+            return new ResponseModelBase<LoginOutput>().OkResult(personOutput, result.Validations.ErrorMessages);
         }
     }
 }

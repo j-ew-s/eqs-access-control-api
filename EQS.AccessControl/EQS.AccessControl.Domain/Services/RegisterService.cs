@@ -25,12 +25,11 @@ namespace EQS.AccessControl.Domain.Services
 
         public Person Create(Person entity)
         {
+            entity.Credential.EncryptedPassword();
             if (entity.IsValidForRegister())
-               return _registerRepository.Create(entity);
-            else
-            {
-                return null;
-            }
+                return _registerRepository.Create(entity);
+            return null;
+
         }
 
         public Person Delete(int id)
@@ -40,17 +39,17 @@ namespace EQS.AccessControl.Domain.Services
 
         public Person GetById(int id)
         {
-           return  _registerRepository.GetById(id);
+            return _registerRepository.GetById(id);
         }
 
         public Person Update(Person entity)
         {
-           return  _registerRepository.Update(entity);
+            return _registerRepository.Update(entity);
         }
 
         IEnumerable<Person> IBaseService<Person>.GetAll()
         {
-          return   _registerRepository.GetAll();
+            return _registerRepository.GetAll();
         }
 
         public IEnumerable<Person> GetByExpression(Expression<Func<Person, bool>> predicate)
