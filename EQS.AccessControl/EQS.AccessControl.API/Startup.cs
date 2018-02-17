@@ -33,6 +33,19 @@ namespace EQS.AccessControl.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                    });
+            });
+
             var keyConfig = new KeyConfig();
             services.AddSingleton<IKeyConfig>(keyConfig);
 
@@ -103,7 +116,9 @@ namespace EQS.AccessControl.API
 
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "EQS Access Control API"); });
+            app.UseCors("AllowAll");
             app.UseMvc();
+            
         }
     }
 }

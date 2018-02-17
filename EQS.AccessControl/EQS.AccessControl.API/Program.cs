@@ -20,7 +20,7 @@ namespace EQS.AccessControl.API
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("localhost:5001/")
+                .UseUrls("http://localhost:13000/")
                 .Build();
     }
 }
