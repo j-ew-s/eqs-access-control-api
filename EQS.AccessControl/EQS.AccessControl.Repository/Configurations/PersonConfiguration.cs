@@ -12,6 +12,8 @@ namespace EQS.AccessControl.Repository.Configurations
 
             builder.HasKey(h => h.Id);
 
+            builder.HasIndex(u => u.Id).IsUnique();
+
             builder.HasOne(h => h.Credential).WithOne(o => o.Person).HasForeignKey<Credential>(f => f.Id);
 
             builder.Property(p => p.Name).IsRequired();

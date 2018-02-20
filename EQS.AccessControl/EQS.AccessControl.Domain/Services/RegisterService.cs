@@ -6,6 +6,7 @@ using EQS.AccessControl.Domain.Entities;
 using EQS.AccessControl.Domain.Interfaces.Repository;
 using EQS.AccessControl.Domain.Interfaces.Services;
 using EQS.AccessControl.Domain.Interfaces.Services.Base;
+using EQS.AccessControl.Domain.ObjectValue;
 
 namespace EQS.AccessControl.Domain.Services
 {
@@ -21,6 +22,11 @@ namespace EQS.AccessControl.Domain.Services
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public Person getCredentialByPersonId(Person person)
+        {
+            return _registerRepository.getCredentialByPersonId(person);
         }
 
         public Person Create(Person entity)
@@ -52,7 +58,7 @@ namespace EQS.AccessControl.Domain.Services
             return _registerRepository.GetAll();
         }
 
-        public IEnumerable<Person> GetByExpression(Expression<Func<Person, bool>> predicate)
+        public IEnumerable<Person> GetByExpression(SearchObject predicate)
         {
             throw new NotImplementedException();
         }

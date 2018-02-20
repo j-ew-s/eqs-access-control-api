@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using EQS.AccessControl.Domain.ObjectValue;
 
 namespace EQS.AccessControl.Domain.Interfaces.Repository.Base
 {
@@ -14,7 +15,7 @@ namespace EQS.AccessControl.Domain.Interfaces.Repository.Base
 
         IEnumerable<TEntity> GetAll();
 
-        IEnumerable<TEntity> GetByExpression(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TEntity> GetByExpression(SearchObject predicate);
 
         TEntity GetById(int id);
 

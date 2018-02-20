@@ -37,7 +37,7 @@ namespace EQS.AccessControl.API.Controllers
         }
 
         // GET: api/Register/5
-        [HttpGet("{id}:int")]
+        [HttpGet("{id}")]
         public ResponseModelBase<RegisterPersonOutput> Get(int id)
         {
             return _registerAppService.GetById(id);
@@ -51,8 +51,8 @@ namespace EQS.AccessControl.API.Controllers
         }
         
         // PUT: api/Register/5
-        [HttpPut("{id}")]
-        public ResponseModelBase<RegisterPersonOutput> Put(int id, [FromBody]PersonInput person)
+        [HttpPut]
+        public ResponseModelBase<RegisterPersonOutput> Put( [FromBody]PersonInput person)
         {
             return _registerAppService.Update(person);
         }

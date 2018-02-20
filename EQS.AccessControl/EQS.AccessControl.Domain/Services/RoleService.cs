@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using EQS.AccessControl.Domain.Entities;
 using EQS.AccessControl.Domain.Interfaces.Repository;
 using EQS.AccessControl.Domain.Interfaces.Services;
+using EQS.AccessControl.Domain.ObjectValue;
 
 namespace EQS.AccessControl.Domain.Services
 {
@@ -22,9 +25,9 @@ namespace EQS.AccessControl.Domain.Services
             return _roleRepository.GetAll();
         }
 
-        public IEnumerable<Role> GetByExpression(Expression<Func<Role, bool>> predicate)
+        public IEnumerable<Role> GetByExpression(SearchObject predicate)
         {
-            throw new NotImplementedException();
+            return _roleRepository.GetByExpression(predicate);
         }
 
         public Role GetById(int id)
@@ -48,7 +51,7 @@ namespace EQS.AccessControl.Domain.Services
 
         public Role Delete(int id)
         {
-            var role = new Role {Id = id};
+            var role = new Role { Id = id };
             if (role.IsValidForDelete(_roleRepository))
                 return _roleRepository.Delete(id);
             return role;
@@ -58,6 +61,11 @@ namespace EQS.AccessControl.Domain.Services
         {
             _roleRepository.Dispose();
             GC.SuppressFinalize(this);
+        }
+
+        public void CreateExpression()
+        {
+
         }
 
     }

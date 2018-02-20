@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using EQS.AccessControl.Domain.ObjectValue;
 using EQS.AccessControl.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -47,12 +48,12 @@ namespace EQS.AccessControl.Repository.Repository.Base
             return DbSet.AsNoTracking().ToList();
         }
 
-        public IEnumerable<TEntity> GetByExpression(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> GetByExpression(SearchObject predicate)
         {
-            return DbSet.Where(predicate).ToList();
+            return DbSet.ToList();
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
             return DbSet.Find(id);
         }

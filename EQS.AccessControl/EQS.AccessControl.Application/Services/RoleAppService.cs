@@ -8,6 +8,7 @@ using EQS.AccessControl.Application.ViewModels.Output;
 using EQS.AccessControl.Application.ViewModels.Output.Base;
 using EQS.AccessControl.Domain.Entities;
 using EQS.AccessControl.Domain.Interfaces.Services;
+using EQS.AccessControl.Domain.ObjectValue;
 
 namespace EQS.AccessControl.Application.Services
 {
@@ -28,9 +29,12 @@ namespace EQS.AccessControl.Application.Services
             return new ResponseModelBase<List<RoleOutput>>().OkResult(roleOutput, new List<string>());
         }
 
-        public ResponseModelBase<List<RoleOutput>> GetByExpression(Expression<Func<RoleInput, bool>> predicate)
+        public ResponseModelBase<List<RoleOutput>> GetByExpression(SearchObjectInput predicate)
         {
-            throw new NotImplementedException();
+            var search = Mapper.Map<SearchObject>(predicate);
+            var result =  _roleService.GetByExpression(search);
+            var roleOutput = Mapper.Map<List<RoleOutput>>(result);
+            return new ResponseModelBase<List<RoleOutput>>().OkResult(roleOutput, new List<string>());
         }
 
         public ResponseModelBase<RoleOutput> GetById(int id)
@@ -50,7 +54,7 @@ namespace EQS.AccessControl.Application.Services
             return new ResponseModelBase<RoleOutput>().OkResult(roleOutput, result.Validations.ErrorMessages);
         }
 
-        public ResponseModelBase<RoleOutput> Update(RoleInput entity)
+        public ResponseModelBase<RoleOutput> Update(RoleUpdateInput entity)
         {
             var roleEntity = Mapper.Map<Role>(entity);
             var result = _roleService.Update(roleEntity);

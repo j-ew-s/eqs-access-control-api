@@ -6,6 +6,6 @@ namespace EQS.AccessControl.Domain.Interfaces.Services
 {
     public interface IRegisterService : IBaseService<Person>, IDisposable
     {
-
+        Person getCredentialByPersonId(Person person);
     }
 }

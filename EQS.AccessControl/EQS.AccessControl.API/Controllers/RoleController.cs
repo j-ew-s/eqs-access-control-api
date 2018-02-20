@@ -46,7 +46,17 @@ namespace EQS.AccessControl.API.Controllers
         {
             return _roleAppService.GetById(id);
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("GetByExpression")]
+        public ResponseModelBase<List<RoleOutput>> GetByExpression([FromBody]SearchObjectInput search)
+        {
+            return _roleAppService.GetByExpression(search);
+        }
+
         /// <summary>
         ///  Insert a new Role to DB
         /// </summary>
@@ -64,8 +74,8 @@ namespace EQS.AccessControl.API.Controllers
         /// <param name="id"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        [HttpPut("{id}")]
-        public ResponseModelBase<RoleOutput> Put(int id, [FromBody]RoleInput value)
+        [HttpPut]
+        public ResponseModelBase<RoleOutput> Put([FromBody]RoleUpdateInput value)
         {
             return _roleAppService.Update(value);
         }

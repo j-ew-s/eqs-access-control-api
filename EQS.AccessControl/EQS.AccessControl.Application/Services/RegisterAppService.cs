@@ -28,7 +28,7 @@ namespace EQS.AccessControl.Application.Services
         {
             var person = Mapper.Map<Person>(entity);
 
-            foreach (var roleId in entity.RoleIds)
+            foreach (var roleId in entity.Roles)
             {
                 var role = _roleService.GetById(roleId);
                 var personRole = new PersonRole { Person = person, PersonId = person.Id, Roles = role, RoleId = roleId };
@@ -43,7 +43,31 @@ namespace EQS.AccessControl.Application.Services
 
         public ResponseModelBase<RegisterPersonOutput> Update(PersonInput entity)
         {
-            throw new NotImplementedException();
+            var person = Mapper.Map<Person>(entity);
+
+            foreach (var roleId in entity.Roles)
+            {
+                var role = _roleService.GetById(roleId);
+                var personRole = new PersonRole { Person = person, PersonId = person.Id, Roles = role, RoleId = roleId };
+                person.PersonRoles.Add(personRole);
+            }
+
+            var personQuery = _registerService.GetById(person.Id);
+
+            if (string.IsNullOrEmpty(person.Credential.Password))
+            {
+                person.Credential.Password = personQuery.Credential.Password ;
+                
+            }
+            person.Credential.Id = personQuery.Credential.Id;
+
+            personQuery.Credential.PersonId = personQuery.Id;
+
+            var response = _registerService.Update(person);
+
+            var personOutput = Mapper.Map<RegisterPersonOutput>(response);
+
+            return new ResponseModelBase<RegisterPersonOutput>().OkResult(personOutput, response.Validations.ErrorMessages);
         }
 
         public ResponseModelBase<RegisterPersonOutput> Delete(int id)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using EQS.AccessControl.Domain.ObjectValue;
 
 namespace EQS.AccessControl.Domain.Interfaces.Services.Base
 {
@@ -10,7 +11,7 @@ namespace EQS.AccessControl.Domain.Interfaces.Services.Base
         TEntity Update(TEntity entity);
         TEntity GetById(int id);
         IEnumerable<TEntity> GetAll();
-        IEnumerable<TEntity> GetByExpression(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TEntity> GetByExpression(SearchObject predicate);
         TEntity Delete(int id);
     }
 }
