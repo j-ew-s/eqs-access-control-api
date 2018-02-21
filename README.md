@@ -25,7 +25,7 @@ Este projeto é parte do teste apresentado pela EQS. A segunda parte é o client
 * Registro das regras de negócio
 * Aplicação das regras de negócio de acordo com a ação executada (Salvar, remover , etc)
 
-##### Infra
+##### Repository
 * Acesso a dados
 * Configuração das Tabelas do Banco
 * Execução do Repositório
