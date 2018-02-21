@@ -1,6 +1,6 @@
-# EQS Test
+# Projeto API EQS
 
-Este projeto é parte do teste apresentado pela EQS. A segunda parte é o cliente Web escrito usando o framework Angular (5) e pode ser encontrado neste link.
+Este projeto é parte do teste apresentado pela EQS. A segunda parte é o cliente Web feito no framework Angular (5) e pode ser encontrado neste link.
 
 ### Tecnologias utilizadas 
 * .Net Core 2.1
