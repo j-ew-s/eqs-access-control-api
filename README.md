@@ -7,12 +7,14 @@ Este projeto é parte do teste apresentado pela EQS. A segunda parte é o client
 * Entity Framework Core
 * AutoMapper
 * JWT
+* Swagger
 
 ### Organização do projeto
 ##### API
 * Controllers
 * Configuração JWT
 * Configuração Autorização
+* Swagger
 
 ##### Application
 * AutoMapper
@@ -30,3 +32,6 @@ Este projeto é parte do teste apresentado pela EQS. A segunda parte é o client
 * Configuração das Tabelas do Banco
 * Execução do Repositório
 * Migrations
+
+
+
