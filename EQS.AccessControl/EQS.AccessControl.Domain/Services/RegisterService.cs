@@ -60,7 +60,7 @@ namespace EQS.AccessControl.Domain.Services
 
         public IEnumerable<Person> GetByExpression(SearchObject predicate)
         {
-            throw new NotImplementedException();
+            return _registerRepository.GetByExpression(predicate);
         }
     }
 }

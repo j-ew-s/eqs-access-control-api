@@ -6,6 +6,8 @@ using EQS.AccessControl.Application.Interfaces;
 using EQS.AccessControl.Application.ViewModels.Input;
 using EQS.AccessControl.Application.ViewModels.Output;
 using EQS.AccessControl.Application.ViewModels.Output.Base;
+using EQS.AccessControl.API.Authorize;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +18,8 @@ namespace EQS.AccessControl.API.Controllers
     /// </summary>
     [Produces("application/json")]
     [Route("api/Role")]
+    [Authorize("Bearer")]
+    [AuthorizeRole("Admin")]
     public class RoleController : Controller
     {
         private readonly IRoleAppService _roleAppService;

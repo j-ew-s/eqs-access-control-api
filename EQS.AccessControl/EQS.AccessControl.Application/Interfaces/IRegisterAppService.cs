@@ -15,7 +15,7 @@ namespace EQS.AccessControl.Application.Interfaces
         ResponseModelBase<RegisterPersonOutput> Update(PersonInput entity);
         ResponseModelBase<RegisterPersonOutput> GetById(int id);
         ResponseModelBase<List<RegisterPersonOutput>> GetAll();
-        ResponseModelBase<List<RegisterPersonOutput>> GetByExpression(System.Linq.Expressions.Expression<Func<PersonInput, bool>> predicate);
+        ResponseModelBase<List<RegisterPersonOutput>> GetByExpression(SearchObjectInput predicate);
         ResponseModelBase<RegisterPersonOutput> Delete(int id);
     }
 }

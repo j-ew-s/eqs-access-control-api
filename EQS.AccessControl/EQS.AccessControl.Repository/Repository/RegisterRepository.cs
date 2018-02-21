@@ -42,12 +42,9 @@ namespace EQS.AccessControl.Repository.Repository
         public override IEnumerable<Person> GetByExpression(SearchObject predicate)
         {
             return Db.Person.AsNoTracking()
-                .Where(w =>
-                    string.IsNullOrEmpty(predicate.TextTerm)
-                    || w.Name.Contains(predicate.TextTerm)
-                )
-               .Take(predicate.ItemQuantity)
-               .ToList();
+                    .Skip(0)
+                    .Take(predicate.ItemQuantity)
+                    .ToList();
         }
     }
 }

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using EQS.AccessControl.Application.Interfaces;
 using EQS.AccessControl.Application.ViewModels.Input;
 using EQS.AccessControl.Application.ViewModels.Output;
 using EQS.AccessControl.Application.ViewModels.Output.Base;
 using EQS.AccessControl.Application.ViewModels.Output.Register;
+using EQS.AccessControl.API.Authorize;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EQS.AccessControl.API.Controllers
@@ -16,6 +15,8 @@ namespace EQS.AccessControl.API.Controllers
     /// </summary>
     [Produces("application/json")]
     [Route("api/Register")]
+    [Authorize("Bearer")]
+    [AuthorizeRole("Admin")]
     public class RegisterController : Controller
     {
         private readonly IRegisterAppService _registerAppService;
@@ -25,11 +26,12 @@ namespace EQS.AccessControl.API.Controllers
             _registerAppService = registerAppService;
         }
 
-        
+
         /// <summary>
         /// Get all the People 
         /// </summary>
         /// <returns>List of People</returns>
+       
         [HttpGet("GetAll")]
         public ResponseModelBase<List<RegisterPersonOutput>> Get()
         {
@@ -42,7 +44,17 @@ namespace EQS.AccessControl.API.Controllers
         {
             return _registerAppService.GetById(id);
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("GetByExpression")]
+        public ResponseModelBase<List<RegisterPersonOutput>> GetByExpression([FromBody]SearchObjectInput search)
+        {
+            return _registerAppService.GetByExpression(search);
+        }
+
         // POST: api/Register
         [HttpPost]
         public ResponseModelBase<RegisterPersonOutput> Post([FromBody]PersonInput person)

@@ -10,6 +10,7 @@ using EQS.AccessControl.Application.ViewModels.Output.Base;
 using EQS.AccessControl.Application.ViewModels.Output.Register;
 using EQS.AccessControl.Domain.Entities;
 using EQS.AccessControl.Domain.Interfaces.Services;
+using EQS.AccessControl.Domain.ObjectValue;
 
 namespace EQS.AccessControl.Application.Services
 {
@@ -84,9 +85,12 @@ namespace EQS.AccessControl.Application.Services
             return new ResponseModelBase<List<RegisterPersonOutput>>().OkResult(personOutput, new List<string>());
         }
 
-        public ResponseModelBase<List<RegisterPersonOutput>> GetByExpression(Expression<Func<PersonInput, bool>> predicate)
+        public ResponseModelBase<List<RegisterPersonOutput>> GetByExpression(SearchObjectInput predicate)
         {
-            throw new NotImplementedException();
+            var search = Mapper.Map<SearchObject>(predicate);
+            var result = _registerService.GetByExpression(search);
+            var roleOutput = Mapper.Map<List<RegisterPersonOutput>>(result);
+            return new ResponseModelBase<List<RegisterPersonOutput>>().OkResult(roleOutput, new List<string>());
         }
 
         public ResponseModelBase<RegisterPersonOutput> GetById(int id)
