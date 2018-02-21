@@ -33,5 +33,13 @@ Este projeto é parte do teste apresentado pela EQS. A segunda parte é o client
 * Execução do Repositório
 * Migrations
 
+### Exposição das APIS
+
+Você encontrará a lista de APIS em Localhost:13000/Swagger;
+
+
+### Observação
+
+O projeto deve ser executado utilizando a porta 13000. Caso utilize outra porta, deverá acessar o projet web e trocar o BASE_URL para executar o consumo correto das APIS.
 
 
