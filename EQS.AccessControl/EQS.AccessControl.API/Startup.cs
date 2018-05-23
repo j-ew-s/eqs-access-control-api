@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using EQS.AccessControl.API.Configurations;
 
 namespace EQS.AccessControl.API
 {
@@ -81,9 +82,11 @@ namespace EQS.AccessControl.API
             services.AddDbContext<EntityFrameworkContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("EQSDBCONNECTION")));
 
-            services.AddTransient<ILoginService, LoginService>();
-            services.AddTransient<ILoginAppService, LoginAppService>();
-            services.AddTransient<ILoginRepository, LoginRepository>();
+            /*  services.AddTransient<ILoginService, LoginService>();
+              services.AddTransient<ILoginAppService, LoginAppService>();
+              services.AddTransient<ILoginRepository, LoginRepository>();*/
+
+            DependencyFactory.RegisterInstance(services);
 
             services.AddTransient<IRegisterService, RegisterService>();
             services.AddTransient<IRegisterAppService, RegisterAppService>();
