@@ -88,13 +88,6 @@ namespace EQS.AccessControl.API
 
             DependencyFactory.RegisterInstance(services);
 
-            services.AddTransient<IRegisterService, RegisterService>();
-            services.AddTransient<IRegisterAppService, RegisterAppService>();
-            services.AddTransient<IRegisterRepository, RegisterRepository>();
-
-            services.AddTransient<IRoleService, RoleService>();
-            services.AddTransient<IRoleAppService, RoleAppService>();
-            services.AddTransient<IRoleRepository, RoleRepository>();
 
             services.AddMvc(options =>{ options.Filters.Add(new ExceptionHandlingFilter()); });
 
