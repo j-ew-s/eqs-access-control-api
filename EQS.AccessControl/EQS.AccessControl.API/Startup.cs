@@ -48,13 +48,18 @@ namespace EQS.AccessControl.API
             });
 
             var keyConfig = new KeyConfig();
-            services.AddSingleton<IKeyConfig>(keyConfig);
 
             var tokenConfig = new JwtConfiguration();
             Configuration.GetSection("TokenConfiguration").Bind(tokenConfig);
-            services.AddSingleton<IJwtConfiguration>(tokenConfig);
 
-            services.AddTransient<ITokenGenerator, TokenGenerator>();
+            DependencyFactory.RegisterInstance(services, keyConfig, tokenConfig);
+
+           // services.AddSingleton<IKeyConfig>(keyConfig);
+
+           
+            //services.AddSingleton<IJwtConfiguration>(tokenConfig);
+
+           // services.AddTransient<ITokenGenerator, TokenGenerator>();
 
             services.AddAuthentication(authOptions =>
             {
@@ -82,11 +87,7 @@ namespace EQS.AccessControl.API
             services.AddDbContext<EntityFrameworkContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("EQSDBCONNECTION")));
 
-            /*  services.AddTransient<ILoginService, LoginService>();
-              services.AddTransient<ILoginAppService, LoginAppService>();
-              services.AddTransient<ILoginRepository, LoginRepository>();*/
 
-            DependencyFactory.RegisterInstance(services);
 
 
             services.AddMvc(options =>{ options.Filters.Add(new ExceptionHandlingFilter()); });
