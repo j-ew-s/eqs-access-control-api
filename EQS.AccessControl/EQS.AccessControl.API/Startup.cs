@@ -1,15 +1,8 @@
 ﻿using System;
 using AutoMapper;
 using EQS.AccessControl.API.Filters;
-using EQS.AccessControl.Application.Interfaces;
-using EQS.AccessControl.Application.Services;
 using EQS.AccessControl.API.JWT;
-using EQS.AccessControl.API.JWT.Interface;
-using EQS.AccessControl.Domain.Interfaces.Repository;
-using EQS.AccessControl.Domain.Interfaces.Services;
-using EQS.AccessControl.Domain.Services;
 using EQS.AccessControl.Repository.Context;
-using EQS.AccessControl.Repository.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -54,13 +47,6 @@ namespace EQS.AccessControl.API
 
             DependencyFactory.RegisterInstance(services, keyConfig, tokenConfig);
 
-           // services.AddSingleton<IKeyConfig>(keyConfig);
-
-           
-            //services.AddSingleton<IJwtConfiguration>(tokenConfig);
-
-           // services.AddTransient<ITokenGenerator, TokenGenerator>();
-
             services.AddAuthentication(authOptions =>
             {
                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -86,8 +72,6 @@ namespace EQS.AccessControl.API
             
             services.AddDbContext<EntityFrameworkContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("EQSDBCONNECTION")));
-
-
 
 
             services.AddMvc(options =>{ options.Filters.Add(new ExceptionHandlingFilter()); });
