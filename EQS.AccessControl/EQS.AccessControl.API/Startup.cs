@@ -69,12 +69,12 @@ namespace EQS.AccessControl.API
                     .RequireAuthenticatedUser().Build());
             });
 
-            
+
             services.AddDbContext<EntityFrameworkContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("EQSDBCONNECTION")));
 
 
-            services.AddMvc(options =>{ options.Filters.Add(new ExceptionHandlingFilter()); });
+            services.AddMvc(options => { options.Filters.Add(new ExceptionHandlingFilter()); });
 
             services.AddAutoMapper();
 
@@ -82,6 +82,13 @@ namespace EQS.AccessControl.API
 
             services.AddSwaggerGen(c =>
             {
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    In = "header",
+                    Description = "Please enter JWT with Bearer into field",
+                    Name = "Authorization",
+                    Type = "token"
+                });
                 c.SwaggerDoc("v1", new Info { Title = "EQS Access Control API", Version = "v1" });
                 c.DescribeAllEnumsAsStrings();
             });
@@ -99,7 +106,7 @@ namespace EQS.AccessControl.API
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "EQS Access Control API"); });
             app.UseCors("AllowAll");
             app.UseMvc();
-            
+
         }
     }
 }
