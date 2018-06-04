@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using AutoMapper;
 using EQS.AccessControl.Application.Interfaces;
 using EQS.AccessControl.Application.ViewModels.Input;

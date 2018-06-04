@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EQS.AccessControl.Domain", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EQS.AccessControl.Repository", "EQS.AccessControl.Repository\EQS.AccessControl.Repository.csproj", "{6A3776AC-5A7A-47EE-B24D-321B374FE4BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EQS.AccessControl.CrossCutting", "EQS.AccessControl.CrossCutting\EQS.AccessControl.CrossCutting.csproj", "{273EEB98-5099-454B-88A6-C9464D246A33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EQS.Accesscontrol.Crosscutting", "EQS.Accesscontrol.Crosscutting\EQS.Accesscontrol.Crosscutting.csproj", "{1CDE5F7F-FDD8-4882-B510-4AD5701045D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{6A3776AC-5A7A-47EE-B24D-321B374FE4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A3776AC-5A7A-47EE-B24D-321B374FE4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A3776AC-5A7A-47EE-B24D-321B374FE4BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{273EEB98-5099-454B-88A6-C9464D246A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{273EEB98-5099-454B-88A6-C9464D246A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{273EEB98-5099-454B-88A6-C9464D246A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{273EEB98-5099-454B-88A6-C9464D246A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDE5F7F-FDD8-4882-B510-4AD5701045D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDE5F7F-FDD8-4882-B510-4AD5701045D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDE5F7F-FDD8-4882-B510-4AD5701045D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDE5F7F-FDD8-4882-B510-4AD5701045D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

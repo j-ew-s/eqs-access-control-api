@@ -102,6 +102,7 @@ namespace EQS.AccessControl.API
                 app.UseDeveloperExceptionPage();
             }
 
+            //Configuration.GetConnectionString("EQSDBCONNECTION")
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "EQS Access Control API"); });
             app.UseCors("AllowAll");
