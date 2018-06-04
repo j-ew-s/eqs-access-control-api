@@ -17,6 +17,7 @@ namespace EQS.AccessControl.API.Filters
 
         private ResponseModelBase<object> PrepareResponseObject(ExceptionContext context)
         {
+           
             return new ResponseModelBase<object>().Exception(new object(), context.Exception.Message);
         }
     }
